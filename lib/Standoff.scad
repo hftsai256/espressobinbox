@@ -8,8 +8,16 @@ module Standoff(
 {
     difference() {
         cylinder( height, radius, radius );
-        translate( [ 0, 0, height-holeDepth ] ) {
-            cylinder( holeDepth, holeRadius, holeRadius );
+        if (height == holeDepth) {
+            translate( [ 0, 0, height-holeDepth-1 ] ) {
+                cylinder( holeDepth+2, holeRadius, holeRadius );
+            }
         }
+        else {
+            translate( [ 0, 0, height-holeDepth ] ) {
+                cylinder( holeDepth, holeRadius, holeRadius );
+            }
+        }
+
     }
 }

@@ -1,6 +1,7 @@
 use <lib/FanHolder.scad>
 use <lib/HalfBox.scad>
 use <lib/Standoff.scad>
+use <lib/Countersunk.scad>
 use <Spacer.scad>
 
 module EbBoardHalf()
@@ -24,6 +25,13 @@ module EbBoardHalf()
         [ $box_wi - ( $standoff_next_d + $bigStandoff_r ), $box_di - ( 2*$standoff_next_d + 3*$bigStandoff_r ) ]
     ];
 
+    dinCountersunks = [
+        [ $din_padding, $din_top, -$board_t ],
+        [ $box_wi-$din_padding, $din_top, -$board_t ],
+        [ $din_padding, $din_top+$din_separation, -$board_t ],
+        [ $box_wi-$din_padding, $din_top+$din_separation, -$board_t ]
+    ];
+
     union() {
         // Half box with cutouts
         difference() {
@@ -42,6 +50,16 @@ module EbBoardHalf()
                     square( [ $sdCardCutout_w, $sdCardCutout_h + $board_t] ); // cannot close above
                 }
 
+            }
+
+            // Countersunk m3 screws for DIN rail clips
+            for( p = dinCountersunks ) {
+                translate( p ) {
+                    Countersunk(
+                        height     = $board_t,
+                        radius     = $countersunk_ro,
+                        holeRadius = $countersunk_ri );
+                }
             }
         }
 

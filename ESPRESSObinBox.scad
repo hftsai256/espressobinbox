@@ -49,7 +49,7 @@ $powerCutout_h    = 11+1;     // height of the cutout for the power connector
 $m3ThroughHole_r  = 3.6/2;    // hole radius to fit M3 screws through
 $m3CutHole_r      = 2.7/2;    // radius of hole into which self-cutting M3 scews cut into --empirically
 
-$ledHole_r        = 3.5;      // hole to fit 5mm LED plus holder through
+$ledHole_r        = 0;      // hole to fit 5mm LED plus holder through
 
 // key parameters (we can change those)
 
@@ -72,6 +72,13 @@ $diskStandoff_r   = $littleStandoff_r;          // outside radius of the disk st
 $diskStandoff_h   = $disk_wall_dz;              // height of the disk standoffs
 $standoff_next_d  = $independent_d;             // distance between a standoff and the next part
 
+$countersunk_ri   = 1.5;                        // countersunk m3 screw radius (hole)
+$countersunk_ro   = 3;                          // countersunk m3 screw radius (padding)
+
+$din_padding      = 30;
+$din_top          = 9;
+$din_separation   = 25;
+
 $gpio_standoff_d  = 3;                          // distance between the GPIO pins and the next standoff
 $board_wall_d1    = $slidingFit_d;              // distance between board and inside of wall on the sdcard side
 $board_wall_d2    = 40;                         // distance between board and wall on the fan side
@@ -92,7 +99,7 @@ $spacer_d         = 2;                          // depth of the spacers riding o
 $spacer_dzabove   = 5;                          // spacers rise this much above the top edge of the half box
 $spacer_dzbelow   = $board_wall_dz;             // spacers foundations rise this much below the top edge of the half box
 
-$fn=20;
+$fn=100;
 
 // derived values (cannot change)
 
