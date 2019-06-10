@@ -42,14 +42,10 @@ module EbBoardHalf()
                     p_radius_i = $box_ri,
                     p_wall_t   = $wall_t );
 
-            translate( [ $board_wall_d4, $box_di + 2* $wall_t, $boardTop_z ] )
-            rotate( 90, [ 1, 0, 0 ])
-            linear_extrude( 3*$wall_t ) {
-                // SD Card
-                translate( [ $board_sdcard_dy - $sdCardCutout_w/2, - $board_t - $sdCardCutout_h ]) {
-                    square( [ $sdCardCutout_w, $sdCardCutout_h + $board_t] ); // cannot close above
-                }
-
+            translate( [ $board_wall_d4 + $board_sdcard_dy - $sdCardCutout_w/2,
+                $box_di - $wall_t,
+                $boardTop_z - $board_t - $sdCardCutout_h ] ) {
+                cube( [ $sdCardCutout_w, $sdCardCutout_h + $board_t, 4*$wall_t] );
             }
 
             // Countersunk m3 screws for DIN rail clips
