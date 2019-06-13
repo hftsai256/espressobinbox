@@ -5,7 +5,7 @@ use <boardMount.scad>
 // key measurements (we cannot do anyhthing about that)
 
 showDiskMount     = 1;
-showBoardMount    = 0;
+showBoardMount    = 1;
 
 $board_w          = 100;      // EspressoBIN board width (longer dimension)
 $board_d          =  72;      // EspressoBIN board depth (shorter dimension)

@@ -37,7 +37,7 @@ module diskMount()
                     RoundedSquare(
                             p_width  = $box_wi + 2*$wall_t,
                             p_height = $box_di + 2*$wall_t,
-                            p_radius = $box_ri + $wall_t );
+                            p_radius = $box_ri);
                 }
             }
 
