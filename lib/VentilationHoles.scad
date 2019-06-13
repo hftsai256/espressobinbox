@@ -1,8 +1,9 @@
 // A bunch of 2D VentilationHole(s). They are arranged between
-// [0, 0] and [partWidth, partHeight] in nrows rows, and ncols columns,
-// where holes take up about holepercent of the X dimension. The percentage
-// of holes in the Y dimension is constructed to the bridges between the
-// holes have the same width.
+// [-partWidth/2, -partHeight/2] and [partWidth/2, partHeight/2]
+// in nrows rows, and ncols columns, where holes take up about
+// holepercent of the X dimension.
+// The percentage of holes in the Y dimension is constructed to
+// the bridges between the holes have the same width.
 
 
 use <VentilationHole.scad>
@@ -34,7 +35,7 @@ module VentilationHoles(
         if( row % 2 == 0 ) {
             for( col=[0:ncols-1] ) {
 
-                translate( [ col * deltax, row * deltay, 0 ] ) {
+                translate( [ col * deltax - partWidth/2, row * deltay - partHeight/2, 0 ] ) {
                     VentilationHole(
                             partWidth  = holeWidth,
                             partHeight = holeHeight,
@@ -43,7 +44,7 @@ module VentilationHoles(
             }
         } else {
             for( col=[0:ncols-2] ) {
-                translate( [ col * deltax + deltax/2, row * deltay, 0 ] ) {
+                translate( [ col * deltax + deltax/2 - partWidth/2, row * deltay - partHeight/2, 0 ] ) {
                     VentilationHole(
                             partWidth  = holeWidth,
                             partHeight = holeHeight,

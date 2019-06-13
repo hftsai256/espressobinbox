@@ -4,6 +4,9 @@ use <boardMount.scad>
 
 // key measurements (we cannot do anyhthing about that)
 
+showDiskMount     = 1;
+showBoardMount    = 0;
+
 $board_w          = 100;      // EspressoBIN board width (longer dimension)
 $board_d          =  72;      // EspressoBIN board depth (shorter dimension)
 $board_t          =   1.8;    // EspressoBIN board thickness (board only, not components)
@@ -31,18 +34,22 @@ $box_di           = $board_d + 4*$boardEdge_hole_d; // box width on the inside
 
 $fn = 100;
 
-translate( [0, 0, 0] ) {
-    mirror( [0, 0, 1] ) {
-        diskMount();
+if (showDiskMount) {
+    mirror( [0 ,0, 1]) {
+        translate( [0, 0, 0] ) {
+            diskMount();
+        }
     }
 }
 
-translate( [0, 0, 35] ) {
-    boardMount();
-}
-
-translate( [$box_wi, 0, 35] ) {
-    mirror( [1, 0, 0] ){
+if (showBoardMount) {
+    translate( [0, 0, 35] ) {
         boardMount();
+    }
+
+    translate( [$box_wi, 0, 35] ) {
+        mirror( [1, 0, 0] ){
+            boardMount();
+        }
     }
 }

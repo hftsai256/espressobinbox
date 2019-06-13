@@ -1,5 +1,6 @@
 use <lib/RoundedSquare.scad>
 use <lib/Countersunk.scad>
+use <lib/VentilationHoles.scad>
 
 module diskMount()
 {
@@ -68,6 +69,19 @@ module diskMount()
                         holeRadius = $countersunk_ri );
                 }
             }
+
+            translate( [$box_wi/2, $box_di/2, -2*$wall_t] ) {
+                linear_extrude( 3*$wall_t ) {
+                    VentilationHoles(
+                        partWidth = 40,
+                        partHeight = 50,
+                        nrows = 12,
+                        ncols = 12,
+                        holepercent = 0.75
+                    );
+                }
+            }
+
         }
     }
 }
