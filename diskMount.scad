@@ -77,10 +77,35 @@ module diskMount()
                         partHeight = 50,
                         nrows = 12,
                         ncols = 12,
-                        holepercent = 0.75
+                        holepercent = 0.8
                     );
                 }
             }
+
+            translate( [15, $box_di/2, -2*$wall_t] ) {
+                linear_extrude( 3*$wall_t ) {
+                    VentilationHoles(
+                        partWidth = 20,
+                        partHeight = 50,
+                        nrows = 12,
+                        ncols = 6,
+                        holepercent = 0.8
+                    );
+                }
+            }
+
+            translate( [$box_wi-15, $box_di/2, -2*$wall_t] ) {
+                linear_extrude( 3*$wall_t ) {
+                    VentilationHoles(
+                        partWidth = 20,
+                        partHeight = 50,
+                        nrows = 12,
+                        ncols = 6,
+                        holepercent = 0.8
+                    );
+                }
+            }
+
 
         }
     }
