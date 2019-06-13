@@ -5,19 +5,16 @@ module Countersunk(
         radius,
         holeRadius )
 {
-    headRadius = holeRadius * 2;
-    headHeight = holeRadius / 2;
-
-    if (radius < headRadius) {
-        radius = headRadius;
+    if (radius < holeRadius * 2) {
+        radius = holeRadius * 2;
     }
 
     union() {
-        translate( [ 0, 0, height-headHeight ] ) {
-            cylinder( headHeight * 2, holeRadius, headRadius * 2 );
+        translate( [ 0, 0, height - holeRadius/2 ] ) {
+            cylinder( holeRadius*2, holeRadius, holeRadius*3 );
         }
-        translate( [0, 0, -1] ) {
-            cylinder( height + 2, holeRadius, holeRadius );
+        translate( [0, 0, -holeRadius] ) {
+            cylinder( height + holeRadius*2, holeRadius, holeRadius );
         }
     }
 }

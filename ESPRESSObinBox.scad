@@ -8,7 +8,7 @@ use <EbFrontface.scad>
 
 showFaces     = -1; // that's the distance from the box, -1 means "don't show"
 showBoardHalf = true;
-showDiskHalf  = 50; // that's the distance the top half is raised, -1 means "don't show"
+showDiskHalf  = -1; // that's the distance the top half is raised, -1 means "don't show"
 showFan       = -1;
 
 // xxx_l:      length of xxx
