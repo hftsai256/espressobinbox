@@ -5,9 +5,7 @@ module boardMount()
 {
     boardStandoffs = [
         [ $boardEdge_hole_d, $boardEdge_hole_d ],
-        [ $box_wi - $boardEdge_hole_d, $boardEdge_hole_d ],
-        [ $boardEdge_hole_d, $box_di - $boardEdge_hole_d ],
-        [ $box_wi - $boardEdge_hole_d, $box_di - $boardEdge_hole_d ]
+        [ $boardEdge_hole_d, $box_di - $boardEdge_hole_d ]
     ];
 
     boardMounts = [
@@ -43,7 +41,7 @@ module boardMount()
         }
 
         translate( [ armThickness, 4*$boardEdge_hole_d, -2*$wall_t ] ) {
-            #linear_extrude( 3*$wall_t ) {
+            linear_extrude( 3*$wall_t ) {
                 RoundedSquare(
                         p_width  = 8*$boardEdge_hole_d,
                         p_height = $box_di - 8*$boardEdge_hole_d,
@@ -53,7 +51,7 @@ module boardMount()
 
         for( p = boardStandoffs ) {
             translate( [ p[0], p[1], -$wall_t ] ) {
-                #Countersunk(
+                Countersunk(
                     height     = $wall_t,
                     radius     = $countersunk_ro,
                     holeRadius = $countersunk_ri );

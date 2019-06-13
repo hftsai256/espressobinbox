@@ -62,7 +62,7 @@ module diskMount()
 
             for( p = boardStandoffs ) {
                 translate( [ p[0], p[1], -$wall_t ] ) {
-                    #Countersunk(
+                    Countersunk(
                         height     = $wall_t,
                         radius     = $countersunk_ro,
                         holeRadius = $countersunk_ri );

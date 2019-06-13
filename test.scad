@@ -31,4 +31,18 @@ $box_di           = $board_d + 4*$boardEdge_hole_d; // box width on the inside
 
 $fn = 100;
 
-diskMount();
+translate( [0, 0, 0] ) {
+    mirror( [0, 0, 1] ) {
+        diskMount();
+    }
+}
+
+translate( [0, 0, 35] ) {
+    boardMount();
+}
+
+translate( [$box_wi, 0, 35] ) {
+    mirror( [1, 0, 0] ){
+        boardMount();
+    }
+}
