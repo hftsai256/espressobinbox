@@ -1,10 +1,9 @@
 use <lib/RoundedSquare.scad>
 use <lib/Countersunk.scad>
-use <lib/Standoff.scad>
 
-module diskBoard()
+module diskMount()
 {
-    $diskMountSpacer = 10;
+    $diskMountSpacer = 9;
     $diskHole1_x = $countersunk_ro + $diskMountSpacer; // x coordinate of the bottom-left disk hole
     $diskHole1_y = ($box_di - $diskHoles_dy) / 2;        // y coordinate of the bottom-left disk hole
 
@@ -45,7 +44,7 @@ module diskBoard()
                 translate( p ) {
                     mirror( [0, 0, 1] ) {
                         Countersunk(
-                            height     = $board_t,
+                            height     = $wall_t,
                             radius     = $countersunk_ro,
                             holeRadius = $countersunk_ri );
                     }
@@ -54,7 +53,7 @@ module diskBoard()
 
             for( p = diskHoles ) {
                 translate( [ p[0], p[1], -$wall_t ] ) {
-                    #Countersunk(
+                    Countersunk(
                         height     = $wall_t,
                         radius     = $countersunk_ro,
                         holeRadius = $countersunk_ri );

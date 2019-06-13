@@ -1,5 +1,6 @@
 use <lib/Countersunk.scad>
-use <diskBoard.scad>
+use <diskMount.scad>
+use <boardMount.scad>
 
 // key measurements (we cannot do anyhthing about that)
 
@@ -16,8 +17,8 @@ $diskHoles_dy     =  62;      // distance between the screw holes on the disk al
 $wall_t           = 1.5;                        // wall thickness
 $box_ri           = 4;                          // inside curve radius of the box's corners
 
-$countersunk_ri   = 1.5;                        // countersunk m3 screw radius (hole)
-$countersunk_ro   = 3;                          // countersunk m3 screw radius (padding)
+$countersunk_ri   = 3.6/2;                      // countersunk m3 screw radius (hole)
+$countersunk_ro   = 3.6;                        // countersunk m3 screw radius (padding)
 
 $din_padding      = 30;
 $din_top          = 9;
@@ -30,4 +31,4 @@ $box_di           = $board_d + 4*$boardEdge_hole_d; // box width on the inside
 
 $fn = 100;
 
-diskBoard();
+diskMount();
