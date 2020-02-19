@@ -17,20 +17,20 @@ $diskHoles_dy     =  62;      // distance between the screw holes on the disk al
 
 // key parameters (we can change those)
 
-$wall_t           = 1.5;                        // wall thickness
-$box_ri           = 4;                          // inside curve radius of the box's corners
+$wall_t           = 2;                        // wall thickness
+$box_ri           = 2;                          // inside curve radius of the box's corners
 
 $countersunk_ri   = 3.6/2;                      // countersunk m3 screw radius (hole)
 $countersunk_ro   = 3.6;                        // countersunk m3 screw radius (padding)
 
-$din_padding      = 30;
+$din_padding      = 15;
 $din_top          = 9;
 $din_separation   = 25;
 
 // derived values (cannot change)
 
-$box_wi           = $board_w + 4*$boardEdge_hole_d; // box length on the inside
-$box_di           = $board_d + 4*$boardEdge_hole_d; // box width on the inside
+$box_wi           = $board_w; // box length on the inside
+$box_di           = $board_d; // box width on the inside
 
 $fn = 100;
 

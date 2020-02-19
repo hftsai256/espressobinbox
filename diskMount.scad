@@ -4,23 +4,18 @@ use <lib/VentilationHoles.scad>
 
 module diskMount()
 {
-    $diskMountSpacer = 9;
-    $diskHole1_x = $countersunk_ro + $diskMountSpacer; // x coordinate of the bottom-left disk hole
-    $diskHole1_y = ($box_di - $diskHoles_dy) / 2;        // y coordinate of the bottom-left disk hole
-
-    diskHoles = [
-        [ $diskHole1_x,                 $diskHole1_y ],
-        [ $diskHole1_x + $diskHoles_dx, $diskHole1_y ],
-        [ $diskHole1_x,                 $diskHole1_y + $diskHoles_dy ],
-        [ $diskHole1_x + $diskHoles_dx, $diskHole1_y + $diskHoles_dy ]
-    ];
-
-    dinMountingBracketHoles = [
-        [ $din_padding, $din_top, 0 ],
-        [ $box_wi-$din_padding, $din_top, 0 ],
-        [ $din_padding, $din_top+$din_separation, 0 ],
-        [ $box_wi-$din_padding, $din_top+$din_separation, 0 ]
-    ];
+//    dinMountingBracketHoles = [
+//        [ $din_padding, $din_top, 0 ],
+//        [ $box_wi-$din_padding, $din_top, 0 ],
+//        [ $din_padding, $din_top+$din_separation, 0 ],
+//        [ $box_wi-$din_padding, $din_top+$din_separation, 0 ]
+//    ];
+	dinMountingBracketHoles = [
+		[ $din_top, $din_padding, 0],
+		[ $din_top, $box_di-$din_padding, 0],
+		[ $din_top+$din_separation, $din_padding, 0],
+		[ $din_top+$din_separation, $box_di-$din_padding, 0]
+	];
 
     boardStandoffs = [
         [ $boardEdge_hole_d, $boardEdge_hole_d],
@@ -28,6 +23,7 @@ module diskMount()
         [ $boardEdge_hole_d, $box_di - $boardEdge_hole_d],
         [ $box_wi - $boardEdge_hole_d, $box_di - $boardEdge_hole_d]
     ];
+
 
     union() {
         difference() {
@@ -41,6 +37,11 @@ module diskMount()
                 }
             }
 
+			echo("board width = ", $box_wi);
+			echo("hole distances = ", (boardStandoffs[1] - boardStandoffs[0]),
+			                          (boardStandoffs[2] - boardStandoffs[1]));
+			echo("Din Holes = ", dinMountingBracketHoles);
+			// DIN rail mount
             for( p = dinMountingBracketHoles ) {
                 translate( p ) {
                     mirror( [0, 0, 1] ) {
@@ -49,15 +50,6 @@ module diskMount()
                             radius     = $countersunk_ro,
                             holeRadius = $countersunk_ri );
                     }
-                }
-            }
-
-            for( p = diskHoles ) {
-                translate( [ p[0], p[1], -$wall_t ] ) {
-                    Countersunk(
-                        height     = $wall_t,
-                        radius     = $countersunk_ro,
-                        holeRadius = $countersunk_ri );
                 }
             }
 
@@ -70,38 +62,15 @@ module diskMount()
                 }
             }
 
-            translate( [$box_wi/2, $box_di/2, -2*$wall_t] ) {
+
+            translate( [$box_wi-40, $box_di/2, -2*$wall_t] ) {
                 linear_extrude( 3*$wall_t ) {
                     VentilationHoles(
                         partWidth = 40,
-                        partHeight = 50,
-                        nrows = 12,
-                        ncols = 12,
-                        holepercent = 0.8
-                    );
-                }
-            }
-
-            translate( [15, $box_di/2, -2*$wall_t] ) {
-                linear_extrude( 3*$wall_t ) {
-                    VentilationHoles(
-                        partWidth = 20,
-                        partHeight = 50,
+                        partHeight = 40,
                         nrows = 12,
                         ncols = 6,
-                        holepercent = 0.8
-                    );
-                }
-            }
-
-            translate( [$box_wi-15, $box_di/2, -2*$wall_t] ) {
-                linear_extrude( 3*$wall_t ) {
-                    VentilationHoles(
-                        partWidth = 20,
-                        partHeight = 50,
-                        nrows = 12,
-                        ncols = 6,
-                        holepercent = 0.8
+                        holepercent = 0.7
                     );
                 }
             }
