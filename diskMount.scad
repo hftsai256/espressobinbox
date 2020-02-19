@@ -63,7 +63,7 @@ module diskMount()
             }
 
 
-            translate( [$box_wi-40, $box_di/2, -2*$wall_t] ) {
+            translate( [$box_wi-32, $box_di/2, -2*$wall_t] ) {
                 linear_extrude( 3*$wall_t ) {
                     VentilationHoles(
                         partWidth = 40,
