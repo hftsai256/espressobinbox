@@ -34,15 +34,21 @@ $box_di           = $board_d + 4*$boardEdge_hole_d; // box width on the inside
 
 $fn = 100;
 
-if (showDiskMount) {
+display="";
+
+if (display == "") assemble();
+if (display == "diskMount.stl") diskMount();
+if (display == "leftBoardMount.stl") boardMount();
+if (display == "rightBoardMount.stl") mirror([1,0,0]) boardMount();
+
+module assemble()
+{
     mirror( [0 ,0, 1]) {
         translate( [0, 0, 0] ) {
             diskMount();
         }
     }
-}
 
-if (showBoardMount) {
     translate( [0, 0, 35] ) {
         boardMount();
     }
@@ -53,3 +59,5 @@ if (showBoardMount) {
         }
     }
 }
+
+
